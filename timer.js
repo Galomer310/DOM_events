@@ -1,7 +1,6 @@
 function greeting() {
-    alert("Hello World"); 
     const para = document.createElement('p');
-    const node = document.createTextNode("Hello World!")
+    const node = document.createTextNode("Hello World!");
     para.appendChild(node);
 
     const element = document.getElementById('container');
@@ -13,13 +12,19 @@ const intervalID = setInterval(() => {
     greeting();
     count++;
 
-    // Clear interval after 5 greetings
     if (count === 5) {
         clearInterval(intervalID);
+        clearParagraphs();
     }
 }, 2000);
 
-// Clear interval on button click
+function clearParagraphs() {
+    const container = document.getElementById('container');
+    container.innerHTML = ''; 
+    count = 0; 
+}
+
 document.getElementById("clear").addEventListener("click", () => {
     clearInterval(intervalID);
+    clearParagraphs();
 });
